@@ -1,11 +1,12 @@
-import { RouterModule, Routes } from '@angular/router';
+import {RouterModule, Routes} from "@angular/router";
+import {AppComponent} from "./app.component";
+import {AuthGuard} from "./+login/auth-guard.service";
 
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'about', component: AboutComponent}
+    {path: '', redirectTo: '/tasks', pathMatch: 'full'},
+    // {path: 'clients', loadChildren: './+client/client.module#ClientModule'},
+    // {path: 'tasks', loadChildren: '/src/app/+task/task.module#TaskModule'},
 ];
 
 export const routing = RouterModule.forRoot(routes);

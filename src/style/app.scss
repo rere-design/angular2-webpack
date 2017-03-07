@@ -1,8 +1,63 @@
-// styles in src/style directory are applied to the whole page
-body {
-    background: #0147A7;
-    color: #fff;
+@import "vars";
+@import "mixins";
+@import "foundation/foundation";
+
+@include normalize();
+@include foundation-global-styles();
+@include foundation-grid();
+@include foundation-float-classes();
+@include foundation-button();
+@include foundation-forms();
+@include foundation-callout();
+@include foundation-close-button();
+@include foundation-dropdown();
+
+html {
+  height: 100%;
 }
+
+body {
+  min-height: 100vh;
+  height: auto !important;
+  position: relative;
+}
+
 a {
-    color: #03A9F4;
+  color: $blue;
+  text-decoration: underline;
+  &:hover {
+    color: $blue-dark;
+    text-decoration: none;
+  }
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+header {
+  padding: 30px 0;
+}
+
+.fa {
+  font-size: rem-calc(18);
+}
+
+.no-bullet {
+  list-style: none;
+  padding: 0;
+}
+
+.new {
+}
+
+.error-wrapper {
+  position: absolute;
+  right: 0;
+}
+
+.dropdown-pane{
+  &.right{
+    right: 0;
+  }
 }

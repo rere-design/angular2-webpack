@@ -1,19 +1,15 @@
-import { Component } from '@angular/core';
-
-import { ApiService } from './shared';
-
-import '../style/app.scss';
+import {Component} from "@angular/core";
+import "../style/app.scss";
+import {AuthService} from "./+login/auth.service";
 
 @Component({
-  selector: 'my-app', // <my-app></my-app>
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+    selector: 'my-app', // <my-app></my-app>
+    templateUrl: './app.component.html',
 })
 export class AppComponent {
-  url = 'https://github.com/preboot/angular2-webpack';
-  title: string;
+    title: string = 'Time Manager';
 
-  constructor(private api: ApiService) {
-    this.title = this.api.title;
-  }
+    constructor(private auth:AuthService) {
+        console.log((new Date()).toISOString())
+    }
 }

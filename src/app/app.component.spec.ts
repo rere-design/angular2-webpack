@@ -2,16 +2,16 @@ import { TestBed } from '@angular/core/testing';
 import { provideRoutes } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { ApiService } from './shared';
 import { AppComponent } from './app.component';
+import {CoreModule} from "./core/core.module";
 
 describe('App', () => {
   // provide our implementations or mocks to the dependency injector
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, CoreModule],
       declarations: [AppComponent],
-      providers: [ApiService, provideRoutes([])]
+      providers: [provideRoutes([])]
     });
   });
 

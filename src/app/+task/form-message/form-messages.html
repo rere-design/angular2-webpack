@@ -1,0 +1,16 @@
+<form action="" class="form" *ngIf="message">
+    <div class="attach-file">
+        <!--Todo:дописать добавление файлов-->
+        <div class="float-left" *ngIf="0">
+            <upload-file [id]="'attach-file'"></upload-file>
+            <label [for]="'attach-file'" class="fa fa-paperclip"></label>
+        </div>
+        <div class="float-right">
+            <button class="fa fa-clock-o"></button>
+            <button title="send" class="fa fa-send-o" (click)="save()"></button>
+        </div>
+        <div class="text-field overflow-hidden">
+            <textarea name="comment" rows="1" [(ngModel)]="message.POST_MESSAGE"></textarea>
+        </div>
+    </div>
+</form>

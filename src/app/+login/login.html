@@ -1,0 +1,23 @@
+<div *ngIf="form || message" class="login-page row">
+    <div class="wrapper medium-4 large-3 medium-centered large-centered">
+        <h1>Вход</h1>
+        <div *ngIf="message">{{message}}</div>
+        <form *ngIf="form" (submit)="login($event)">
+            <div *ngIf="step == 1" class="row small-collapse">
+                <label for="domain" class="small-4 column">Domain:</label>
+                <span class="small-8 column"><input id="domain" type="text" name="domain" size="5" [(ngModel)]="domain"></span>
+            </div>
+
+            <div *ngIf="step == 2" class="row medium-collapse">
+                <label for="token" class="small-4 column">Token:</label>
+                <span class="small-8 column"><input id="token" type="text" name="domain" size="30" [(ngModel)]="token"></span>
+            </div>
+
+            <div class="form-group row small-collapse">
+                <div class="small-offset-4 small-4 column"><button type="submit" class="button column" [disabled]="send">Войти</button></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<iframe #iframe style="display: none" width="100%" frameborder="0"></iframe>

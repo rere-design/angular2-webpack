@@ -1,0 +1,113 @@
+@mixin inline-block($align: top, $important: false) {
+  @if ($important) {
+    display: inline-block !important;
+  } @else {
+    display: inline-block;
+  }
+  vertical-align: $align;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+}
+
+@mixin bg-inline($sprite, $repeat: no-repeat) {
+  @include bg($sprite, $repeat);
+  @include inline-block(middle);
+}
+
+@mixin bg-center($sprite, $repeat: no-repeat) {
+  @include bg($sprite, $repeat);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -(nth($sprite, 6) / 2);
+  margin-left: -(nth($sprite, 5) / 2);
+}
+
+@mixin svg-inline($sprite, $repeat: no-repeat) {
+  @include bg($sprite, $repeat);
+  @include inline-block(middle);
+}
+
+@mixin svg-center($sprite, $repeat: no-repeat) {
+  @include bg-svg($sprite, $repeat);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -(nth($sprite, 4) / 2);
+  margin-left: -(nth($sprite, 3) / 2);
+}
+
+@mixin borderHover($border-width: 3px, $color: $blueColor, $display: none) {
+  border: $border-width solid $color;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: $display;
+}
+
+@mixin cross($width, $height, $color: #000, $hoverColor: #000, $radius: 0) {
+  position: relative;
+  transform: rotate(45deg);
+  &:before, &:after {
+    content: '';
+    background: $color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: $radius;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  &:before {
+    width: $width;
+    height: $height;
+  }
+  &:after {
+    width: $height;
+    height: $width;
+  }
+  &:hover {
+    &:before, &:after {
+      background: $hoverColor;
+    }
+  }
+}
+
+@function grid-calc($colNumber, $totalColumns) {
+  $result: percentage(($colNumber / $totalColumns));
+  @if $result == 0% {
+    $result: 0;
+  }
+  @return $result;
+}
+
+@mixin mediaPrint() {
+  /* For grid */
+  @for $i from 1 through $grid-column-count {
+    .small-#{$i}, .medium-#{$i}, .large-#{$i} {
+      width: grid-calc($i, $grid-column-count);
+    }
+    .small-up-#{$i}, .medium-up-#{$i}, .large-up-#{$i} {
+      > .column, > .columns {
+        width: grid-calc($i, $grid-column-count);
+      }
+    }
+  }
+  body {
+    width: 1000px;
+  }
+  a[href]:after {
+    content: '';
+    display: none;
+  }
+  img:after {
+    content: '';
+    display: none;
+  }
+}
+
+
+

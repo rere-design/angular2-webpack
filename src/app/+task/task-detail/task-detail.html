@@ -1,0 +1,49 @@
+<div class="section-task" *ngIf="task">
+    <div class="row">
+        <div class="medium-8 columns" let editTitle>
+            <div class="action fa fa-square-o"></div>
+            <div class="task-name"
+                 (click)="editTitle=true"
+                 *ngIf="!editTitle">
+                {{task.TITLE}}
+            </div>
+
+            <div class="edit" *ngIf="editTitle">
+                <!--Todo:написать директиву для авто закрывающийхся инпутов по клавище enter-->
+                <input type="text" name="task-title" [(ngModel)]="task.TITLE">
+                <button class="button" (click)="editTitle=false">save</button>
+            </div>
+        </div>
+
+        <div class="medium-4 columns">
+            <auditors [auditors]="auditors"></auditors>
+        </div>
+    </div>
+
+    <a [routerLink]="routeTo('group', task.GROUP_ID)" class="project-name">{{task.group ? task.group.NAME : 'Без проекта'}}</a>
+
+    <div class="row">
+        <div class="medium-6 columns">
+            <!--TODO Выбор пользователя исполнителя-->
+            <button class="user-block">
+                <span class="fa fa-user-circle"></span>
+                <span class="userName">{{task.responsible.username()}}</span>
+            </button>
+        </div>
+        <div class="medium-6 columns">
+            <!--TODO Выбор даты выполнения-->
+            <button>
+                <time class="date">{{task.CLOSED_DATE | dateFormat}}</time>
+            </button>
+        </div>
+    </div>
+
+    <div class="task-text">
+        {{task.DESCRIPTION}}
+    </div>
+
+    <div class="sub-task-list">
+        <sub-task></sub-task>
+    </div>
+    <messages></messages>
+</div>

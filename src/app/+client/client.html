@@ -1,0 +1,16 @@
+test
+
+<table>
+    <tr *ngFor="let client of clients | async" (click)="findFor(client)">
+        <td>{{client.ID}}</td>
+        <td>{{client.TITLE}}</td>
+        <td>{{client.COMPANY_TYPE}}</td>
+        <td>{{client.DATE_CREATE | dateFormat}}</td>
+        <td>{{client.BANKING_DETAILS}}</td>
+        <td>{{client.ADDRESS}}</td>
+        <td>{{client.REG_ADDRESS}}</td>
+        <td>{{client.INDUSTRY}}</td>
+        <td>{{client.COMMENTS}}</td>
+        <td>{{client.assigned?.username()}}</td>
+    </tr>
+</table>

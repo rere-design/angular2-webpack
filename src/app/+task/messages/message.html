@@ -1,0 +1,37 @@
+<div class="clearfix" *ngIf="message" let editMode let hover let submenu (mouseenter)="hover=true" (mouseleave)="submenu=hover=false" >
+    <a href="user/{{message.AUTHOR_ID}}" title="{{user?.username()}}">
+        <span class="photo">
+            <img *ngIf="user?.PERSONAL_PHOTO" [src]="user?.PERSONAL_PHOTO" [alt]="user.username()" width="40">
+            <span *ngIf="!user?.PERSONAL_PHOTO" class="fa fa-user-circle"></span>
+        </span>
+        <span class="user">{{message.AUTHOR_NAME}}</span>
+    </a>
+
+    <div *ngIf="!editMode">
+        <div class="float-right" style="position: relative">
+            <button *ngIf="hover" (click)="submenu=!submenu" (mouseenter)="submenu=true">
+                <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+            </button>
+            <div class="dropdown-pane bottom right" [class.is-open]="submenu">
+                <ul class="no-bullet" (click)="submenu=false">
+                    <li *ngIf="user?.ID == currentUser?.ID">
+                        <a href="javascript:void(0)" class="under-line" (click)="editMode=true" *ngIf="user?.ID == currentUser?.ID"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>редактировать</a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="under-line alert" (click)="remove()"><i class="fa fa-trash" aria-hidden="true"></i>удалить</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="overflow-hidden message-block">
+            <div class="html"
+                 [innerHtml]="message.POST_MESSAGE_HTML?message.POST_MESSAGE_HTML:message.POST_MESSAGE"></div>
+            <div class="date">{{message.POST_DATE| dateFormat}}</div>
+        </div>
+    </div>
+
+    <div *ngIf="editMode" class="overflow-hidden message-edit">
+        <form-messages [message]="message" [taskID]="taskID" (onSubmit)="onChange.emit($event)"></form-messages>
+    </div>
+</div>

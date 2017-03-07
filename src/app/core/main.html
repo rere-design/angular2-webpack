@@ -1,0 +1,36 @@
+<header>
+    <div class="row">
+        <div class="medium-3 columns">
+            <a routerLink="/tasks" routerLinkActive="active" class="tasks">
+                <span class="fa fa-tasks"></span>
+                <span class="title">Задачи</span>
+            </a>
+        </div>
+
+        <div class="medium-6 columns">
+            <form action="" class="search overflow-hidden">
+                <button title="submit" class="fa fa-search pull-right"></button>
+                <div><input type="text" placeholder="Поиск"></div>
+            </form>
+        </div>
+
+        <div class="medium-3 columns">
+            <a *ngIf="user" href="javascript:void(0)" title="Выход" (click)="logout()" class="float-right">
+                <span class="fa fa-user-circle"></span>
+                <img src="{{user.PERSONAL_PHOTO}}" alt="" width="40">
+                <span class="username">{{user.LAST_NAME}} {{user.NAME}}</span>
+            </a>
+        </div>
+    </div>
+</header>
+
+<div class="error-wrapper medium-3">
+    <div *ngFor="let error of errors; let i = index">
+        <div *ngIf="!error.hide" class="callout {{error.type}}">
+            <h4>{{error.title}}</h4>
+            <p [innerHtml]="error.text"></p>
+            <button class="close-button float-right" aria-label="Close alert" type="button" (click)="error.hide=true;bxService.errors.emit()">
+                <i class="fa fa-times" aria-hidden="true"></i></button>
+        </div>
+    </div>
+</div>

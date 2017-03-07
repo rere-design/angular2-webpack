@@ -1,0 +1,27 @@
+<ul *ngIf="subTasks" class="no-bullet" let editMode>
+    <li *ngFor="let task of subTasks; let i=index;">
+        <div *ngIf="!editMode">
+            <div class="managers-button float-right">
+                <ul class="no-bullet">
+                    <li>
+                        <button (click)="editMode=task.ID">Редактировать</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="overflow-hidden">
+                <input type="checkbox" id="subtask_{{i}}" (change)="changeStatus(task)">
+                <label for="subtask_{{i}}">{{task.TITLE}}</label>
+            </div>
+        </div>
+        <div *ngIf="editMode==task.ID">
+            <form action="">
+                <button class="button float-right" (click)="editMode=save(task)">save</button>
+                <div class="overflow-hidden">
+                    <textarea name="title" [(ngModel)]="task.TITLE"></textarea>
+                </div>
+            </form>
+        </div>
+    </li>
+</ul>
+
+<div class="add-subtask">Добавить подзадачу</div>

@@ -1,0 +1,8 @@
+<div class="messages-component">
+    <form-messages [taskID]="params" (onSubmit)="getComments()"></form-messages>
+    <div class="messages-list" *ngIf="messages">
+        <div class="message" *ngFor="let message of messages">
+            <message [taskID]="params" [message]="message" (onChange)="getComments()"></message>
+        </div>
+    </div>
+</div>

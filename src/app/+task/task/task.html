@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="medium-4 columns">
+        <div class="row">
+            <div class="medium-6 columns">
+                <label class="select-project">
+                    <select name="group" (change)="updateRouter($event.target.name, $event.target.value)">
+                        <option value="">- выберите проект -</option>
+                        <option value="0" [selected]="_params.group == 0">Без проекта</option>
+                        <option *ngFor="let item of system.groups | async" [attr.value]="item.ID"
+                                [selected]="_params.group == item.ID">
+                            {{item.NAME}}
+                        </option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="medium-6 columns">
+                <label class="user-group-component">
+                    <select name="user" (change)="updateRouter($event.target.name, $event.target.value)">
+                        <option value="">- выберите исполнителя -</option>
+                        <option *ngFor="let item of system.users | async" [value]="item.ID"
+                                [selected]="_params.user == item.ID">
+                            {{item.NAME}}
+                        </option>
+                    </select>
+                </label>
+            </div>
+        </div>
+
+        <task-list></task-list>
+    </div>
+
+    <div class="medium-8 columns">
+        <section class="content-block">
+            <task-detail></task-detail>
+        </section>
+    </div>
+</div>

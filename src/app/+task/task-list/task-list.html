@@ -1,0 +1,29 @@
+<div class="task-list">
+    <div class="task-item" *ngIf="tasks">
+        <div class="header">
+            <span class="title">Активные задачи</span>
+            <span class="amount">({{tasks.length}})</span>
+        </div>
+
+        <div class="task" *ngFor="let task of tasks">
+            <button class="action fa" [class.fa-check-square-o]="task.STATUS>0" [class.fa-square-o]="task.STATUS<1"
+                    (click)="changeStatus(task)"></button>
+
+            <a [routerLink]="routeTo('task', task.ID)" class="title">{{task.TITLE}}</a>
+
+            <div class="components">
+                <!--TODO Сделать выбор даты-->
+                <button>
+                    <time class="date">{{task.CLOSED_DATE | dateFormat}}</time>
+                </button>
+                <!--TODO Сделать выбор пользователя-->
+                <button class="fa fa-user-circle">
+                    {{task.responsible?.username()}}
+                </button>
+            </div>
+
+            <a [routerLink]="routeTo('group', task.GROUP_ID)">
+                {{task.GROUP_ID>0 ? task.group?.NAME : 'Без проекта'}}</a>
+        </div>
+    </div>
+</div>

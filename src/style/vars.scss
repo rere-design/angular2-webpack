@@ -1,0 +1,43 @@
+/* Colors */
+$white: #fff;
+$black: #000;
+$blue: #1f8fce;
+$blue-dark: #162b3a;
+$grey: #9da8ae;
+$grey-light: #d3d3d3;
+$grey-dark: #707070;
+$green-dark: #2e3640;
+
+/* Foundation */
+
+$body-font-family: 'PT Sans', Helvetica, Roboto, Arial, sans-serif;
+
+$foundation-palette: (
+        primary: #1f8fce,
+        secondary: #707070,
+        success: #3adb76,
+        warning: #ffae00,
+        alert: #f54040,
+);
+
+$global-width: 100%;
+$grid-column-gutter: 20px;
+
+$body-background: #f8f8f8;
+
+$button-radius: 3px;
+$input-radius: 3px;
+
+$global-font-size: 14px;
+$body-font-color: $green-dark;
+
+$breakpoints: (
+        small: 0,
+        medium: 641px,
+        large: 1025px,
+        xlarge: 1201px,
+        xxlarge: 1441px,
+);
+
+$breakpoint-classes: (small medium large xlarge xxlarge);
+
