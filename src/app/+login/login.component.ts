@@ -43,6 +43,8 @@ export class LoginComponent implements OnInit{
             this.step = 2;
             this.iframe.nativeElement.setAttribute('src', this.authService.go(this.domain));
             this.iframe.nativeElement.style = {display: 'block'};
+            let data = this.iframe.nativeElement.contentDocument || this.iframe.nativeElement.contentWindow.document;
+            if(data.getElementsByTagName('h1').length && (this.token = data.getElementsByTagName('h1')[0].innerText)) this.login();
         } else {
             this.authService.login(this.domain, this.token.toString());
             this.redirect();
