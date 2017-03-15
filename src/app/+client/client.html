@@ -1,4 +1,4 @@
-<bx-table [columns]="columns" [pagination]="pagination" [source]="source" (changePage)="changePage($event)"></bx-table>
+<!--<bx-table [columns]="columns" [pagination]="pagination" [source]="source" (changePage)="changePage($event)"></bx-table>-->
 
 <table>
     <tr *ngFor="let client of clients | async" (click)="findFor(client)">

@@ -10,6 +10,8 @@ import {SystemService} from "../shared/system.service";
 
 export class ClientComponent implements OnInit {
     clients;
+    columns;
+    pagination;
 
     constructor(private system: SystemService, private service: Bx24Service, private dataService: DaDataService) {
         this.dataService.suggest('party', 'сбербанк').then(data => console.log('Поиск по данным', data));
@@ -25,6 +27,9 @@ export class ClientComponent implements OnInit {
     findFor(client) {
         let inn = client.BANKING_DETAILS ? client.BANKING_DETAILS.match(/ИНН\s*(\d{10}|\d{12})[^\d]+/) : false;
         this.dataService.suggest('party', inn ? inn[1] : client.TITLE).then(data => console.log(data));
+    }
+
+    changePage(event) {
     }
 
 }

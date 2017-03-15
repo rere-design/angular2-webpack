@@ -10,10 +10,47 @@
     <link rel="icon" type="image/x-icon" href="/img/favicon.ico">
 
     <base href="/">
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0; }
+
+        .loader {
+            cursor: progress;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.1); }
+        .loader .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin: -5px 0 0 -5px;
+            background-color: #c0c0c0;
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+            animation-name: animation-loader;
+            animation-duration: 1s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: normal; }
+
+        @keyframes animation-loader {
+            0% {
+                transform: rotate(0deg) translateX(50px) rotate(0deg); }
+            100% {
+                transform: rotate(360deg) translateX(50px) rotate(-360deg); } }
+
+    </style>
 </head>
 <body>
 <my-app>
-    <div id="page-loading">Идет загрузка...</div>
+    <div class="loader">
+        <div class="circle"></div>
+    </div>
 </my-app>
 </body>
 </html>
