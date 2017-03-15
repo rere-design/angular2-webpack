@@ -20,13 +20,18 @@ export class UploadFile {
         [].forEach.call(response, (file) => {
             let reader = new FileReader();
             reader.onload = () => {
-                this.service.post(this.method, {
-                    id: this.storageId,
-                    fileContent: [file.name, btoa(reader.result)],
-                    data: {NAME: file.name}
-                }).then((file) => {
+                if (0) {
+                    this.service.post(this.method, {
+                        id: this.storageId,
+                        fileContent: [file.name, btoa(reader.result)],
+                        data: {NAME: file.name}
+                    }).then((file) => {
+                        this.onUploadFile.emit(file);
+                    })
+                }else {
                     this.onUploadFile.emit(file);
-                })
+                }
+
             };
             reader.readAsBinaryString(file);
         });

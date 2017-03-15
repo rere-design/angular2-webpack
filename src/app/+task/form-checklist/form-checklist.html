@@ -1,0 +1,8 @@
+<form action="" *ngIf="check">
+    <button class="button float-right" (click)="onClose.emit(null)">save</button>
+    <div class="overflow-hidden">
+        <textarea name="title" [(ngModel)]="check.TITLE"></textarea>
+    </div>
+</form>
+
+

@@ -6,4 +6,5 @@ export class Message {
     POST_DATE: any;
     POST_MESSAGE: any;
     POST_MESSAGE_HTML: any;
+    FILES:any[];
 }

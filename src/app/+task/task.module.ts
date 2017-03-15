@@ -10,6 +10,7 @@ import {SubTaskComponent} from "./subtask/subtask.component";
 import {TaskDetailComponent} from "./task-detail/task-detail.component";
 import {TaskComponent} from "./task/task.component";
 import {TaskListComponent} from "./task-list/task-list.component";
+import {FormCheckComponent} from "./form-checklist/form-checklist";
 
 const taskRoutes: Routes = [
     {path: 'tasks', component: TaskComponent, canActivate: [AuthGuard]},
@@ -29,9 +30,10 @@ const taskRoutes: Routes = [
         MessagesComponent,
         FormMessagesComponent,
         MessageComponent,
+        FormCheckComponent,
     ],
-    providers: [
-    ],
+
+    providers: [],
 })
 
 export class TaskModule {

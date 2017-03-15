@@ -1,6 +1,8 @@
 import {Component, Output, OnInit, EventEmitter, Input} from "@angular/core";
 import {Message} from "../../models/message";
+import {File} from "../../models/file";
 import {Bx24Service} from "../../shared/bx24.service";
+
 @Component({
     templateUrl: 'form-messages.html',
     selector: 'form-messages',
@@ -24,6 +26,11 @@ export class FormMessagesComponent implements OnInit {
         this.message = this.message ? this.message : Object.assign({}, new Message());
     }
 
+
+    addFile(id) {
+        this.message.FILES.push(id);
+    }
+
     save() {
         if (this.message.POST_MESSAGE.length) {
             if (!this.message.ID) {
@@ -39,7 +46,7 @@ export class FormMessagesComponent implements OnInit {
                 );
             }
         } else {
-            alert('нельзя' + (this.message.ID ? ' сохранить' : ' добавить') + ' пустое сообщение')
+            alert('нельзя' + (this.message.ID ? ' сохранить' : ' добавить') + ' пустое сообщение');
         }
     }
 }

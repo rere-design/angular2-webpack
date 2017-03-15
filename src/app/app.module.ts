@@ -20,7 +20,7 @@ import {SystemService} from "./shared/system.service";
 
         CoreModule,
         TaskModule,
-        ClientModule,
+        // ClientModule,
         LoginModule,
 
         routing

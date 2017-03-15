@@ -24,4 +24,9 @@
     </li>
 </ul>
 
-<div class="add-subtask">Добавить подзадачу</div>
+<div class="wrapper-checklist " let addMode>
+    <div class="clearfix" *ngIf="addMode">
+        <form-check (onClose)="addMode=false"></form-check>
+    </div>
+    <button class="button add-checklist" (click)="addMode=true">Добавить подзадачу</button>
+</div>

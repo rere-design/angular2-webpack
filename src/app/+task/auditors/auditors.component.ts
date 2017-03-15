@@ -12,6 +12,5 @@ export class AuditorsComponent {
     }
 
     ngOnInit() {
-
     }
 }
