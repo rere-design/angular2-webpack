@@ -31,8 +31,9 @@ export class FormMessagesComponent implements OnInit {
         this.message.FILES.push(id);
     }
 
+
     save() {
-        if (this.message.POST_MESSAGE.length) {
+        if (this.message.POST_MESSAGE && this.message.POST_MESSAGE.length) {
             if (!this.message.ID) {
                 this.bxService.get('task.commentitem.add', [this.taskID, {'POST_MESSAGE': this.message.POST_MESSAGE}]).then(() => {
                         this.onSubmit.emit();
